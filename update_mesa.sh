@@ -26,9 +26,9 @@ run_custom_steps_at_source() {
         eval "local COMMAND=\"$P_SCRIPT_PLUS_ARGS\""
         if [ ! -z "$P_REDIR_TARGET" ]; then
             eval "TARGET=\"$P_REDIR_TARGET\""
-            python3 $COMMAND > $TARGET
+            python $COMMAND > $TARGET
         else
-            python3 $COMMAND
+            python $COMMAND
         fi
         check_error
         popd > /dev/null
@@ -204,9 +204,9 @@ custom_source_gen() {
         eval "local COMMAND=\"$P_SCRIPT_PLUS_ARGS\""
         if [ ! -z "$P_REDIR_TARGET" ]; then
             eval "TARGET=\"$P_REDIR_TARGET\""
-            python3 $COMMAND > $GENDIR/$TARGET
+            python $COMMAND > $GENDIR/$TARGET
         else
-            python3 $COMMAND
+            python $COMMAND
         fi
         check_error
         popd > /dev/null
