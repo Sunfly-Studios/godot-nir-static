@@ -16,6 +16,7 @@ def options(opts):
     opts.Add(BoolVariable("debug_crt", "Compile with MSVC's debug CRT (/MDd)", False))
     opts.Add(BoolVariable("use_llvm", "Use the LLVM compiler", False))
     opts.Add("mingw_prefix", "MinGW prefix", mingw)
+    opts.Add("llvm_win_prefix", "LLVM on Windows custom installation prefix", "")
 
 
 def exists(env):
@@ -59,8 +60,14 @@ def generate(env):
         env.Append(LINKFLAGS=["/WX"])
 
         if env["use_clang_cl"]:
-            env["CC"] = "clang-cl"
-            env["CXX"] = "clang-cl"
+            if env["llvm_win_prefix"]:
+                env["CC"] = env["llvm_win_prefix"] + "/bin/clang-cl"
+                env["CXX"] = env["llvm_win_prefix"] + "/bin/clang-cl"
+                env["AR"] = env["llvm_win_prefix"] + "/bin/llvm-lib"
+                env["LINK"] = env["llvm_win_prefix"] + "/bin/lld-link"
+            else:
+                env["CC"] = "clang-cl"
+                env["CXX"] = "clang-cl"
             env.Append(CPPDEFINES=["CLANG_CL_ENABLED"])
 
     elif (sys.platform == "win32" or sys.platform == "msys") and not env["mingw_prefix"]:
