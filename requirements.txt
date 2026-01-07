@@ -1,1 +1,3 @@
-pip install Mako==1.3.10
+scons==4.10.0
+mako==1.3.10
+pyyaml==6.0.3
