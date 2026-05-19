@@ -1002,3 +1002,16 @@ index d6c0623..1eac1e8 100644
     }
  
     set_foreach(a, entry) {
+diff --git a/src/microsoft/compiler/nir_to_dxil.c b/src/microsoft/compiler/nir_to_dxil.c
+index f99cf691205..b335e0f5fd9 100644
+--- a/src/microsoft/compiler/nir_to_dxil.c
++++ b/src/microsoft/compiler/nir_to_dxil.c
+@@ -3103,7 +3103,7 @@ emit_barrier_impl(struct ntd_context *ctx, nir_variable_mode modes, mesa_scope e
+        (mem_scope > SCOPE_WORKGROUP || !is_compute)) {
+       flags |= DXIL_BARRIER_MODE_UAV_FENCE_GLOBAL;
+    } else {
+-      flags |= DXIL_BARRIER_MODE_UAV_FENCE_THREAD_GROUP;
++      flags |= DXIL_BARRIER_MODE_UAV_FENCE_GLOBAL;
+    }
+ 
+    if ((modes & nir_var_mem_shared) && is_compute)
