@@ -159,6 +159,7 @@ copy_sources() {
     copy_file src/util/blake3 blake3.c
     copy_file src/util/blake3 blake3_dispatch.c
     copy_file src/util/blake3 blake3_portable.c
+    copy_file src/util/blake3 blake3_neon.c
     copy_subir_headers src/util/perf
 
     cp ./mesa/VERSION godot-mesa/VERSION.info
