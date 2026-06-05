@@ -276,7 +276,14 @@ mesa_private_inc_paths = [v for v in mesa_private_inc_paths if v not in mesa_bla
 # Prepending these to avoid some conflicts, at least with OS GL headers.
 env.Prepend(CPPPATH=mesa_private_inc_paths)
 
-mesa_sources += [v for v in list(Path(mesa_absdir).rglob("*.c"))]
+for v in list(Path(mesa_absdir).rglob("*.c")):
+    # Skip compiling this arm64 file if we're not compiling
+    # for arm64
+    if str(v).endswith("blake3_neon.c") and not env["arch"] == "arm64":
+        continue
+    
+    mesa_sources += [v]
+
 mesa_sources += [v for v in list(Path(mesa_absdir).rglob("*.cpp"))]
 mesa_sources = [str(v).replace(mesa_absdir, mesa_dir) for v in mesa_sources]
 mesa_sources = [v.replace("\\", "/") for v in mesa_sources]
