@@ -1,4 +1,4 @@
 [submodule "mesa"]
 	path = mesa
-	url = https://gitlab.freedesktop.org/mesa/mesa
-	branch = mesa-25.3.1
+	url = https://github.com/Sunfly-Studios/mesa
+	branch = 25.3-godot-nir-static
