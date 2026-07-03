@@ -247,9 +247,4 @@ copy_sources
 blacklist_sources
 tweak_gitignore
 
-if [ -d ./godot-patches ]; then
-    echo "Applying patches"
-    find ./godot-patches -name '*.patch' -exec git apply {} \;
-fi
-
 custom_source_gen

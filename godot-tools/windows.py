@@ -125,7 +125,7 @@ def generate(env):
                     os.path.normpath(os.path.join(sdk_root, "Include", sdk_version, "ucrt")),
                     os.path.normpath(os.path.join(sdk_root, "Include", sdk_version, "shared")),
                     os.path.normpath(os.path.join(sdk_root, "Include", sdk_version, "um")),
-                    os.path.normpath(os.path.join(sdk_root, "Include", sdk_version, "winrt")), # <-- ADDED
+                    os.path.normpath(os.path.join(sdk_root, "Include", sdk_version, "winrt")),
                 ])
                 env.Prepend(LIBPATH=[
                     os.path.normpath(os.path.join(sdk_root, "Lib", sdk_version, "ucrt", target_arch)),
